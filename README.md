@@ -8,7 +8,7 @@ Este é um sistema básico de gerenciamento de usuários.
 - NodeJs
 - Java
 
-### Passo-a-passo para execução do sistema ###
+### Passo-a-passo para execução do sistema: ###
 #### I - Backend ####
 1. Clone o projeto deste repositório :)
 

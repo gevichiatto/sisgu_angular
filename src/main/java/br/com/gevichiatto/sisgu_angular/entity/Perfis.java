@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class Perfis {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String nome;

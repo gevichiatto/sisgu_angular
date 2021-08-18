@@ -10,6 +10,8 @@ import { PerfilService } from '../services/perfil.service';
 export class PerfilListComponent implements OnInit {
 
   perfis: Perfil[] | undefined;
+  onEditting: boolean = false;
+  perfilEdicao!: Perfil;
 
   constructor(private perfilService: PerfilService) { }
 
@@ -19,4 +21,22 @@ export class PerfilListComponent implements OnInit {
     });
   }
 
+  onEditar(perfil: Perfil) {
+    this.onEditting = true;
+    this.perfilEdicao = perfil;
+  }
+
+  onExcluir(perfil: Perfil) {
+    this.perfilService.delete(perfil).subscribe(result => {
+      this.ngOnInit();
+    });
+  }
+
+  onSubmit() {
+    this.perfilService.update(this.perfilEdicao).subscribe(result => {
+      this.onEditting = false;
+      this.ngOnInit();
+    });
+  }
+  
 }

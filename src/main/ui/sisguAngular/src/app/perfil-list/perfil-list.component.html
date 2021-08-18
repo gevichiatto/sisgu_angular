@@ -1,18 +1,39 @@
 <div class="card my-5">
-    <div class="card-body">
+    <div *ngIf="!onEditting"class="card-body">
         <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
             <th scope="col">#</th>
             <th scope="col">Perfil</th>
+            <th scope="col">Ações</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let perfil of perfis">
             <td>{{ perfil.id }}</td>
             <td>{{ perfil.nome }}</td>
+            <td>
+                <button type="button" class="btn btn-secondary" (click)="onEditar(perfil)">Editar</button>
+                <button type="button" class="btn btn-warning" (click)="onExcluir(perfil)">Excluir</button>
+            </td>
             </tr>
         </tbody>
         </table>
+    </div>
+    <div *ngIf="onEditting" class="card my-5">
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit()" #userForm="ngForm"> 
+                <div class="form-group">
+                    <label for="nome">Nome do Perfil</label>
+                    <input type="text"
+                        class="form-control"
+                        placeholder="Digite o nome do perfil"
+                        id="nome"
+                        name="nome" [(ngModel)]="perfilEdicao.nome"/>
+                    <button type="submit" class="btn btn-info">Editar</button>
+                    <button type="button" class="btn btn-danger" (click)="onEditting=false">Cancelar</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

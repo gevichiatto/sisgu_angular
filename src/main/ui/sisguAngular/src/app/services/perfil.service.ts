@@ -21,4 +21,13 @@ export class PerfilService {
   public save(perfil: Perfil) {
     return this.http.post<Perfil>(this.perfisUrl, perfil);
   }
+
+  public delete(perfil: Perfil) {
+    return this.http.delete(`${this.perfisUrl}/${perfil.id}`);
+  }
+
+  public update(perfil: Perfil) {
+    return this.http.put(this.perfisUrl, perfil);
+  }
+
 }

@@ -17,6 +17,12 @@ export class CargoListComponent implements OnInit {
 
   ngOnInit() {
     this.cargoService.findAll().subscribe(data => {
+      data.sort(function(a,b) { 
+        if (a.nome >= b.nome)
+          return 1;
+        else
+          return -1;
+      });
       this.cargos = data;
     });
   }

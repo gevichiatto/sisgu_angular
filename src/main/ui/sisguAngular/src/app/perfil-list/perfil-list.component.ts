@@ -17,6 +17,12 @@ export class PerfilListComponent implements OnInit {
 
   ngOnInit() {
     this.perfilService.findAll().subscribe(data => {
+      data.sort(function(a,b) { 
+        if (a.nome >= b.nome)
+          return 1;
+        else
+          return -1;
+      });
       this.perfis = data;
     });
   }

@@ -21,4 +21,8 @@ export class CargoService {
   public save(cargo: Cargo) {
     return this.http.post<Cargo>(this.cargosUrl, cargo);
   }
+
+  public update(cargo: Cargo) {
+    return this.http.put(this.cargosUrl, cargo);
+  }
 }

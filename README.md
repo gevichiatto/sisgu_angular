@@ -2,7 +2,7 @@
 ## Sistema de Gerenciamento de Usuarios - Versão Frontend em Angular ##
 
 ### Início ###
-Esse é um sistema básico de gerenciamento de usuários
+Este é um sistema básico de gerenciamento de usuários.
 
 ### Pré requisitos ###
 - NodeJs
@@ -25,7 +25,7 @@ java -jar target/sisgu_angular-0.0.1-SNAPSHOT.jar
 4. O backend do sistema roda no endereço http://localhost:8080 e o banco de dados pode ser acessado por meio do endereço http://localhost:8080/h2-console/, usando as credenciais contidas no arquivo ./src/main/resources/application.properties.
 
 #### II - Frontend ####
-1. Navegue até o diretório ./src/main/ui e execute o seguinte comando para instalar as dependências do frontend:
+1. Em outra instância do seu terminal, navegue até o diretório ./src/main/ui e execute o seguinte comando para instalar as dependências do frontend:
 ````
 npm install
 ````

@@ -1,0 +1,15 @@
+<div class="card my-5">
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #userForm="ngForm"> 
+            <div class="form-group">
+                <label for="nome">Nome do Perfil</label>
+                <input type="text"
+                    class="form-control"
+                    placeholder="Digite o nome do perfil"
+                    id="nome"
+                    name="nome" [(ngModel)]="nome" />
+                <button type="submit" class="btn btn-info">Criar</button>
+            </div>
+        </form>
+    </div>
+</div>

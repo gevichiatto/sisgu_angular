@@ -10,6 +10,8 @@ import { CargoFormComponent } from './cargo-form/cargo-form.component';
 import { FormsModule } from '@angular/forms';
 import { PerfilListComponent } from './perfil-list/perfil-list.component';
 import { PerfilFormComponent } from './perfil-form/perfil-form.component';
+import { UsuarioListComponent } from './usuario-list/usuario-list.component';
+import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { PerfilFormComponent } from './perfil-form/perfil-form.component';
     CargoListComponent,
     CargoFormComponent,
     PerfilListComponent,
-    PerfilFormComponent
+    PerfilFormComponent,
+    UsuarioListComponent,
+    UsuarioFormComponent
   ],
   imports: [
     BrowserModule,

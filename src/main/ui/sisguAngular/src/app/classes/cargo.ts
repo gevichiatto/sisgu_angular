@@ -1,4 +1,4 @@
 export class Cargo {
-    id: string | undefined;
-    name: string | undefined;
+    id!: string;
+    nome!: string;
 }

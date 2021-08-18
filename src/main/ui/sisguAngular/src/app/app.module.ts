@@ -6,16 +6,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app/app.component';
 import { CargoListComponent } from './cargo-list/cargo-list.component';
 import { CargoService } from './services/cargo.service';
+import { CargoFormComponent } from './cargo-form/cargo-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CargoListComponent
+    CargoListComponent,
+    CargoFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [CargoService],
   bootstrap: [AppComponent]

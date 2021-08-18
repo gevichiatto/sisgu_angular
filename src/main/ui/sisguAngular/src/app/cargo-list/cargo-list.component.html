@@ -1,1 +1,18 @@
-<p>cargo-list works!</p>
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Cargo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cargo of cargos">
+            <td>{{ cargo.id }}</td>
+            <td>{{ cargo.nome }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

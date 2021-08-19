@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+.textWarning {
+    color: rgb(201 152 13);
+}
+
+.nomeWarning {
+    border-color: rgb(201 152 13);
+}
+
+.textNull {
+    color: crimson;
+}
+
+.nomeNull {
+    border-color: crimson;
+}

@@ -5,6 +5,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Cargo</th>
+            <th scope="col">Ações</th>
           </tr>
         </thead>
         <tbody>
@@ -22,13 +23,16 @@
       <div class="card-body">
           <form (ngSubmit)="onSubmit()" #userForm="ngForm"> 
               <div class="form-group">
-                  <label for="nome">Nome do Cargp</label>
+                  <label for="nome" [ngClass]="!nomeUnico ? 'textWarning' : (!nomeFilled ? 'textNull' : '')">Nome do Cargo</label>
                   <input type="text"
                       class="form-control"
                       placeholder="Digite o nome do cargo"
                       id="nome"
-                      name="nome" [(ngModel)]="cargoEdicao.nome"/>
-                  <button type="submit" class="btn btn-info">Editar</button>
+                      name="nome" [(ngModel)]="cargoEdicao.nome"
+                      [ngClass]="!nomeUnico ? 'nomeWarning' : (!nomeFilled ? 'nomeNull' : '')"/>
+                  <div *ngIf="!nomeFilled" class="form-text textNull">O nome é obrigatório!</div>
+                  <div *ngIf="!nomeUnico" class="form-text textWarning">O nome do cargo digitado já está cadastrado!</div>
+                  <button type="submit" class="btn btn-info">Salvar</button>
                   <button type="button" class="btn btn-danger" (click)="onEditting=false">Cancelar</button>
               </div>
           </form>

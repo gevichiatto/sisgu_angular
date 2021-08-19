@@ -4,36 +4,36 @@
             <div class="form-group">
                 <div class="row mb-3">
                     <div class="col-6">
-                        <label for="nome" class="form-label" [ngClass]="!nomeValido ? 'textErrado' : ''">Nome do Usuário</label>
+                        <label for="nome" class="form-label" [ngClass]="!nomeValido ? 'textNull' : ''">Nome do Usuário</label>
                         <input type="text"
                             class="form-control"
                             placeholder="Digite o nome do usuário"
                             id="nome"
                             name="nome" [(ngModel)]="nomeUsuario" required
-                            [ngClass]="!nomeValido ? 'nomeErrado' : ''"/>
-                        <div *ngIf="!nomeValido" class="form-text textErrado">Você deve preencher um nome para o usuário!</div>
+                            [ngClass]="!nomeValido ? 'nomeNull' : ''"/>
+                        <div *ngIf="!nomeValido" class="form-text textNull">Você deve preencher um nome para o usuário!</div>
                     </div>
                     <div class="col-6">
-                        <label for="cpf" class="form-label" [ngClass]="!cpfValido ? 'textErrado' : (!cpfUnico ? 'textWarning' : '')">CPF do Usuário</label>
+                        <label for="cpf" class="form-label" [ngClass]="!cpfValido ? 'textNull' : (!cpfUnico ? 'textWarning' : '')">CPF do Usuário</label>
                         <input type="text"
                             class="form-control cpf-mask"
                             placeholder="Digite o CPF do usuário"
                             id="cpf"
                             name="cpf" [(ngModel)]="cpfUsuario" required
-                            [ngClass]="!cpfValido ? 'textErrado' : (!cpfUnico ? 'cpfRepetido' : '')"/>
-                        <div *ngIf="!cpfValido" class="form-text textErrado">Você deve preencher um CPF para o usuário!</div>
+                            [ngClass]="!cpfValido ? 'nomeNull' : (!cpfUnico ? 'nomeWarning' : '')"/>
+                        <div *ngIf="!cpfValido" class="form-text textNull">Você deve preencher um CPF para o usuário!</div>
                         <div *ngIf="!cpfUnico" class="form-text textWarning">O CPF digitado já está cadastrado para outro usuário!</div>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-6">
-                        <label for="nome" class="form-label" [ngClass]="!dataValida ? 'textErrado' : ''">Data de Nascimento</label>
+                        <label for="nome" class="form-label" [ngClass]="!dataValida ? 'textNull' : ''">Data de Nascimento</label>
                         <input type="date"
                             class="form-control"
                             id="dataNascimento"
                             name="dataNascimento" [(ngModel)]="dataNascimento" required
-                            [ngClass]="!dataValida ? 'dataErrada' : ''"/>
-                        <div *ngIf="!dataValida" class="form-text textErrado">Você deve informar uma data de nascimento válida!</div>
+                            [ngClass]="!dataValida ? 'nomeNull' : ''"/>
+                        <div *ngIf="!dataValida" class="form-text textNull">Você deve informar uma data de nascimento válida!</div>
                     </div>
                     <div class="col-6">
                         <label for="sexo" class="form-label">Sexo</label>

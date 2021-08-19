@@ -9,9 +9,11 @@ import { PerfilService } from '../services/perfil.service';
 })
 export class PerfilListComponent implements OnInit {
 
-  perfis: Perfil[] | undefined;
+  perfis!: Perfil[];
   onEditting: boolean = false;
   perfilEdicao!: Perfil;
+  nomeUnico: boolean = true;
+  nomeFilled: boolean = true;
 
   constructor(private perfilService: PerfilService) { }
 
@@ -29,6 +31,8 @@ export class PerfilListComponent implements OnInit {
 
   onEditar(perfil: Perfil) {
     this.onEditting = true;
+    this.nomeUnico = true;
+    this.nomeFilled = true;
     this.perfilEdicao = perfil;
   }
 
@@ -39,10 +43,30 @@ export class PerfilListComponent implements OnInit {
   }
 
   onSubmit() {
+    this.nomeUnico = true;
+    this.nomeFilled = true;
+
+    if (!this.perfilEdicao.nome) {
+      this.nomeFilled = false;
+      return this.ngOnInit();;
+    } else if (!this.validaNomeUnico(this.perfilEdicao.nome)) {
+      return this.ngOnInit();;
+    }
+
     this.perfilService.update(this.perfilEdicao).subscribe(result => {
       this.onEditting = false;
       this.ngOnInit();
     });
+  }
+
+  validaNomeUnico(name: string) {
+    for (let p of this.perfis) {
+      if (p.nome == name) {
+        this.nomeUnico = false;
+        return false;
+      }
+    }
+    return true;
   }
   
 }

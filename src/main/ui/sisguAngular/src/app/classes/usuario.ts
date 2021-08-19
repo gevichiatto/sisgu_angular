@@ -1,3 +1,6 @@
+import { Cargo } from "./cargo";
+import { Perfil } from "./perfil";
+
 export class Usuario {
     id!: string;
     cpf!: string;
@@ -5,6 +8,6 @@ export class Usuario {
     nome!: string;
     sexo!: string;
     dataCadastro!: Date;
-    idCargo!: string;
-    idPerfil!: string;
+    cargo!: Cargo;
+    perfil!: Perfil;
 }

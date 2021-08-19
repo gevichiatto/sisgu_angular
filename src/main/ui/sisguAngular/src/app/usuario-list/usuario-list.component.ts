@@ -16,7 +16,15 @@ export class UsuarioListComponent implements OnInit {
   constructor(private usuarioService: UsuarioService) { }
 
   ngOnInit() {
-    this.usuarios = [];
+    this.usuarioService.findAll().subscribe(data => {
+      data.sort(function(a,b) { 
+        if (a.nome >= b.nome)
+          return 1;
+        else
+          return -1;
+      });
+      this.usuarios = data;
+    })
   }
 
 }

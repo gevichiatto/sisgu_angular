@@ -3,6 +3,8 @@ package br.com.gevichiatto.sisgu_angular.entity;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +19,13 @@ public class Usuario extends Pessoa{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    private String nome;
+    private String cpf;
+    private Date dataNascimento;
+   
+    @Enumerated(EnumType.STRING)
+    private Sexo sexo;
 
     @ManyToOne
     @JoinColumn(name = "idCargo", nullable = false)
@@ -79,6 +88,22 @@ public class Usuario extends Pessoa{
 
     public void setDataCadastro(Date dataCadastro) {
         this.dataCadastro = dataCadastro;
+    }
+
+    public Cargos getCargo() {
+        return this.cargo;
+    }
+
+    public void setCargo(Cargos cargo) {
+        this.cargo = cargo;
+    }
+
+    public Perfis getPerfil() {
+        return this.perfil;
+    }
+
+    public void setPerfil(Perfis perfil) {
+        this.perfil = perfil;
     }
     
 }

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cargo } from '../classes/cargo';
 import { Perfil } from '../classes/perfil';
 import { Usuario } from '../classes/usuario';
 import { CargoService } from '../services/cargo.service';
 import { PerfilService } from '../services/perfil.service';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
   selector: 'app-usuario-form',
@@ -27,7 +29,7 @@ export class UsuarioFormComponent implements OnInit {
 
   usuario!: Usuario;
 
-  constructor(private perfilService: PerfilService, private cargoService: CargoService) {
+  constructor(private route: ActivatedRoute, private router: Router, private perfilService: PerfilService, private cargoService: CargoService, private usuarioService: UsuarioService) {
     this.usuario = new Usuario();
   }
 
@@ -64,18 +66,15 @@ export class UsuarioFormComponent implements OnInit {
         this.cargoObj = c;
       }
     }
-    
+
     this.usuario.nome = this.nomeUsuario;
     this.usuario.cpf = this.cpfUsuario;
     this.usuario.dataNascimento = new Date(this.dataNascimento);
-    this.usuario.sexo = this.sexo;
+    this.usuario.sexo = this.sexo == "Feminino" ? "F" : "M";
     this.usuario.perfil = this.perfilObj;
     this.usuario.cargo = this.cargoObj;
     this.usuario.dataCadastro = new Date();
 
-    console.log("Usuario: ", this.usuario);
-
+    this.usuarioService.save(this.usuario).subscribe(result => {});
   }
-
-
 }

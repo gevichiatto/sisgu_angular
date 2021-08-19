@@ -44,7 +44,7 @@ export class PerfilListComponent implements OnInit {
     this.onEditting = true;
     this.nomeUnico = true;
     this.nomeFilled = true;
-    this.perfilEdicao = perfil;
+    this.perfilEdicao = {...perfil};
   }
 
   onExcluir(perfil: Perfil) {

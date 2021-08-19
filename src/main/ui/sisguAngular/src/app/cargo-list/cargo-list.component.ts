@@ -37,7 +37,7 @@ export class CargoListComponent implements OnInit {
     this.onEditting = true;
     this.nomeUnico = true;
     this.nomeFilled = true;
-    this.cargoEdicao = cargo;
+    this.cargoEdicao = {...cargo};
   }
 
   onSubmit() {

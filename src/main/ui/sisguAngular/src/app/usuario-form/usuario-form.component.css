@@ -1,0 +1,15 @@
+.nomeErrado {
+    border-color: crimson;
+}
+
+.cpfErrado {
+    border-color: crimson;
+}
+
+.dataErrada {
+    border-color: crimson;
+}
+
+.textErrado {
+    color: crimson;
+}

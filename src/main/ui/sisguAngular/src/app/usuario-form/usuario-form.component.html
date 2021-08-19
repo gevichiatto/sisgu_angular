@@ -4,33 +4,40 @@
             <div class="form-group">
                 <div class="row mb-3">
                     <div class="col-6">
-                        <label for="nome">Nome do Usuário</label>
+                        <label for="nome" class="form-label" >Nome do Usuário</label>
                         <input type="text"
                             class="form-control"
                             placeholder="Digite o nome do usuário"
                             id="nome"
-                            name="nome" [(ngModel)]="nomeUsuario"/>
+                            name="nome" [(ngModel)]="nomeUsuario" required
+                            [ngClass]="!nomeValido ? 'nomeErrado' : ''"/>
+                        <div *ngIf="!nomeValido" class="form-text textErrado">Você deve preencher um nome para o usuário!</div>
                     </div>
                     <div class="col-6">
-                        <label for="cpf">CPF do Usuário</label>
+                        <label for="cpf" class="form-label">CPF do Usuário</label>
                         <input type="text"
                             class="form-control cpf-mask"
                             placeholder="Digite o CPF do usuário"
                             id="cpf"
-                            name="cpf" [(ngModel)]="cpfUsuario"/>
+                            name="cpf" [(ngModel)]="cpfUsuario" required
+                            [ngClass]="!cpfValido ? 'cpfErrado' : ''"/>
+                        <div *ngIf="!cpfValido" class="form-text textErrado">Você deve preencher um CPF para o usuário!</div>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-6">
-                        <label for="nome">Data de Nascimento</label>
+                        <label for="nome" class="form-label">Data de Nascimento</label>
                         <input type="date"
                             class="form-control"
                             id="dataNascimento"
-                            name="dataNascimento" [(ngModel)]="dataNascimento"/>
+                            name="dataNascimento" [(ngModel)]="dataNascimento" required
+                            [ngClass]="!dataValida ? 'dataErrada' : ''"/>
+                        <div *ngIf="!dataValida" class="form-text textErrado">Você deve informar uma data de nascimento válida!</div>
                     </div>
                     <div class="col-6">
-                        <label for="sexo">Sexo</label>
-                        <select class="form-select" [(ngModel)]="sexo" name="selectSexo">
+                        <label for="sexo" class="form-label">Sexo</label>
+                        <select class="form-select" [(ngModel)]="sexo" name="selectSexo" required>
+                            <option selected disabled>Selecione sua opção</option>
                             <option value="F">Feminino</option>
                             <option value="M">Masculino</option>
                         </select>
@@ -38,14 +45,16 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-6">
-                        <label for="usuarioCargo">Cargo do Usuário</label>
-                        <select class="form-select" [(ngModel)]="nomeCargo" name="selectCargo">
+                        <label for="usuarioCargo" class="form-label">Cargo do Usuário</label>
+                        <select class="form-select" [(ngModel)]="nomeCargo" name="selectCargo" required>
+                            <option selected disabled>Selecione sua opção</option>
                             <option *ngFor="let cargo of cargos">{{ cargo.nome }}</option>
                         </select>
                     </div>
                     <div class="col-6">
-                        <label for="usuarioPerfil">Perfil de Usuário</label>
-                        <select class="form-select" [(ngModel)]="nomePerfil" name="selectPerfil">
+                        <label for="usuarioPerfil" class="form-label">Perfil de Usuário</label>
+                        <select class="form-select" [(ngModel)]="nomePerfil" name="selectPerfil" required>
+                            <option selected disabled>Selecione sua opção</option>
                             <option *ngFor="let perfil of perfis">{{ perfil.nome }}</option>
                         </select>
                     </div>

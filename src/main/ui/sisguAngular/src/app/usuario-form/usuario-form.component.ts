@@ -29,6 +29,10 @@ export class UsuarioFormComponent implements OnInit {
 
   usuario!: Usuario;
 
+  nomeValido: boolean = true;
+  cpfValido: boolean = true;
+  dataValida: boolean = true;
+
   constructor(private route: ActivatedRoute, private router: Router, private perfilService: PerfilService, private cargoService: CargoService, private usuarioService: UsuarioService) {
     this.usuario = new Usuario();
   }
@@ -42,6 +46,8 @@ export class UsuarioFormComponent implements OnInit {
           return -1;
       });
       this.perfis = data;
+      this.nomePerfil = this.perfis[0].nome;
+
       this.cargoService.findAll().subscribe(data => {
         data.sort(function(a,b) { 
           if (a.nome >= b.nome)
@@ -50,11 +56,17 @@ export class UsuarioFormComponent implements OnInit {
             return -1;
         });
         this.cargos = data;
+        this.nomeCargo = this.cargos[0].nome;
       });
     });
+    this.sexo = "F";
   }
 
   onSubmit() {
+    this.nomeValido = true;
+    this.cpfValido = true;
+    this.dataValida = true;
+
     for (let p of this.perfis) {
       if (p.nome == this.nomePerfil) {
         this.perfilObj = p;
@@ -75,6 +87,27 @@ export class UsuarioFormComponent implements OnInit {
     this.usuario.cargo = this.cargoObj;
     this.usuario.dataCadastro = new Date();
 
+    if (!this.validarForm(this.usuario)) {
+      return;
+    }
+
+    console.log("Usuario: ", this.usuario)
     this.usuarioService.save(this.usuario).subscribe(result => {});
+  }
+
+  validarForm(user: Usuario) {
+    if (!user.nome) { 
+      this.nomeValido = false;
+      return false;
+    } 
+    else if (!user.cpf) { 
+      this.cpfValido = false;
+      return false;
+    } 
+    else if (!user.dataNascimento.valueOf()) { 
+      this.dataValida = false;
+      return false;
+    } 
+    else { return true; }
   }
 }

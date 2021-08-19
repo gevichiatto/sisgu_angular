@@ -16,6 +16,7 @@ export class UsuarioFormComponent implements OnInit {
 
   cargos!: Cargo[];
   perfis!: Perfil[];
+  listaUsuarios!: Usuario[];
 
   nomeUsuario!: string;
   cpfUsuario!: string;
@@ -32,6 +33,7 @@ export class UsuarioFormComponent implements OnInit {
   nomeValido: boolean = true;
   cpfValido: boolean = true;
   dataValida: boolean = true;
+  cpfUnico: boolean = true;
 
   constructor(private route: ActivatedRoute, private router: Router, private perfilService: PerfilService, private cargoService: CargoService, private usuarioService: UsuarioService) {
     this.usuario = new Usuario();
@@ -57,6 +59,9 @@ export class UsuarioFormComponent implements OnInit {
         });
         this.cargos = data;
         this.nomeCargo = this.cargos[0].nome;
+        this.usuarioService.findAll().subscribe(data => {
+          this.listaUsuarios = data;
+        })
       });
     });
     this.sexo = "F";
@@ -66,6 +71,7 @@ export class UsuarioFormComponent implements OnInit {
     this.nomeValido = true;
     this.cpfValido = true;
     this.dataValida = true;
+    this.cpfUnico = true;
 
     for (let p of this.perfis) {
       if (p.nome == this.nomePerfil) {
@@ -89,9 +95,8 @@ export class UsuarioFormComponent implements OnInit {
 
     if (!this.validarForm(this.usuario)) {
       return;
-    }
-
-    console.log("Usuario: ", this.usuario)
+    } 
+    
     this.usuarioService.save(this.usuario).subscribe(result => {});
   }
 
@@ -103,11 +108,22 @@ export class UsuarioFormComponent implements OnInit {
     else if (!user.cpf) { 
       this.cpfValido = false;
       return false;
-    } 
-    else if (!user.dataNascimento.valueOf()) { 
+    } else if (!this.validaCPFUnico(user.cpf)) {
+      return false;
+    } else if (!user.dataNascimento.valueOf()) { 
       this.dataValida = false;
       return false;
     } 
     else { return true; }
+  }
+
+  validaCPFUnico(cpf: string) {
+    for (let u of this.listaUsuarios) {
+      if (u.cpf == cpf) {
+        this.cpfUnico = false;
+        return false;
+      }
+    }
+    return true;
   }
 }

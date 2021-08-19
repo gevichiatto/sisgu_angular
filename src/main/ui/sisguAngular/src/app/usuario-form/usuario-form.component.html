@@ -14,14 +14,15 @@
                         <div *ngIf="!nomeValido" class="form-text textErrado">Você deve preencher um nome para o usuário!</div>
                     </div>
                     <div class="col-6">
-                        <label for="cpf" class="form-label" [ngClass]="!cpfValido ? 'textErrado' : ''">CPF do Usuário</label>
+                        <label for="cpf" class="form-label" [ngClass]="!cpfValido ? 'textErrado' : (!cpfUnico ? 'textWarning' : '')">CPF do Usuário</label>
                         <input type="text"
                             class="form-control cpf-mask"
                             placeholder="Digite o CPF do usuário"
                             id="cpf"
                             name="cpf" [(ngModel)]="cpfUsuario" required
-                            [ngClass]="!cpfValido ? 'cpfErrado' : ''"/>
+                            [ngClass]="!cpfValido ? 'textErrado' : (!cpfUnico ? 'cpfRepetido' : '')"/>
                         <div *ngIf="!cpfValido" class="form-text textErrado">Você deve preencher um CPF para o usuário!</div>
+                        <div *ngIf="!cpfUnico" class="form-text textWarning">O CPF digitado já está cadastrado para outro usuário!</div>
                     </div>
                 </div>
                 <div class="row mb-3">

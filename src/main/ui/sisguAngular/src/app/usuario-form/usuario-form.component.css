@@ -13,3 +13,11 @@
 .textErrado {
     color: crimson;
 }
+
+.textWarning {
+    color: rgb(201 152 13);
+}
+
+.cpfRepetido {
+    border-color: rgb(201 152 13);
+}

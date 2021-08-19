@@ -14,6 +14,7 @@ export class CargoListComponent implements OnInit {
   cargoEdicao!: Cargo;
   nomeUnico: boolean = true;
   nomeFilled: boolean = true;
+  cargosExiste: boolean = false;
 
   constructor(private cargoService: CargoService) {}
 
@@ -25,7 +26,10 @@ export class CargoListComponent implements OnInit {
         else
           return -1;
       });
-      this.cargos = data;
+      if (data.length) {
+        this.cargos = data;
+        this.cargosExiste = true;
+      }
     });
   }
 

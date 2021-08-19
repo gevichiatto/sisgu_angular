@@ -1,6 +1,9 @@
 <div class="card my-5">
     <h5 *ngIf="!onEditting" class="text-center mt-2">Tabela de Perfis Cadastrados</h5>
-    <div *ngIf="!onEditting" class="card-body">
+    <div *ngIf="!perfisExiste" class="alert alert-warning text-center">
+        Não há nenhum Perfil cadastrado!
+      </div>
+    <div *ngIf="!onEditting && perfisExiste" class="card-body">
         <table class="table table-bordered table-striped text-center">
         <thead class="thead-dark">
             <tr>
@@ -21,7 +24,7 @@
         </tbody>
         </table>
     </div>
-    <div *ngIf="onEditting" class="card my-5">
+    <div *ngIf="onEditting && perfisExiste" class="card my-5">
         <h5 class="text-center mt-2">Cadastro de Perfil</h5>
         <div class="card-body text-center">
             <form (ngSubmit)="onSubmit()" #userForm="ngForm"> 

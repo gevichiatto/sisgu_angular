@@ -1,6 +1,9 @@
 <div class="card my-5">
   <h5 *ngIf="!onEditting" class="text-center mt-2">Tabela de Cargos Cadastrados</h5>
-    <div *ngIf="!onEditting" class="card-body">
+  <div *ngIf="!cargosExiste" class="alert alert-warning text-center">
+    Não há nenhum Cargo cadastrado!
+  </div>
+    <div *ngIf="!onEditting && cargosExiste" class="card-body">
       <table class="table table-bordered table-striped text-center">
         <thead class="thead-dark">
           <tr>
@@ -20,7 +23,7 @@
         </tbody>
       </table>
     </div>
-    <div *ngIf="onEditting" class="card my-5">
+    <div *ngIf="onEditting && cargosExiste" class="card my-5">
       <h5 class="text-center mt-2">Cadastro de Cargos</h5>
       <div class="card-body">
           <form (ngSubmit)="onSubmit()" #userForm="ngForm"> 

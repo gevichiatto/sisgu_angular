@@ -31,6 +31,8 @@ export class UsuarioListComponent implements OnInit {
   dataValida: boolean = true;
   cpfUnico: boolean = true;
 
+  usuariosExiste: boolean = false;
+
   constructor(private usuarioService: UsuarioService, private cargoService: CargoService, private perfilService: PerfilService) { }
 
   ngOnInit() {
@@ -41,7 +43,10 @@ export class UsuarioListComponent implements OnInit {
         else
           return -1;
       });
-      this.usuarios = data;
+      if (data.length) {
+        this.usuarios = data;
+        this.usuariosExiste = true;
+      }
 
       this.cargoService.findAll().subscribe(data => {
         data.sort(function(a,b) { 

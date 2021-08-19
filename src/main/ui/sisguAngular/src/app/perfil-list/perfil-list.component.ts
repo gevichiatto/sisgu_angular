@@ -17,6 +17,7 @@ export class PerfilListComponent implements OnInit {
   perfilEdicao!: Perfil;
   nomeUnico: boolean = true;
   nomeFilled: boolean = true;
+  perfisExiste: boolean = false;
 
   constructor(private perfilService: PerfilService, private usuarioService: UsuarioService) { }
 
@@ -28,7 +29,10 @@ export class PerfilListComponent implements OnInit {
         else
           return -1;
       });
-      this.perfis = data;
+      if (data.length) {
+        this.perfis = data;
+        this.perfisExiste = true;
+      }
 
       this.usuarioService.findAll().subscribe(data => {
         this.usuarios = data;

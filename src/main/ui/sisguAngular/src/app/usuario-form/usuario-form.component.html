@@ -1,10 +1,10 @@
 <div class="card my-5">
     <h5 class="text-center mt-2">Cadastro de Usuário</h5>
     <div *ngIf="!perfisExiste || !cargosExiste">
-        <div *ngIf="!cargosExiste" class="alert alert-warning">
+        <div *ngIf="!cargosExiste" class="alert alert-warning text-center">
             Não há nenhum Cargo cadastrado! É preciso cadastrar um cargo para adicionar um usuário!
         </div>
-        <div *ngIf="!perfisExiste" class="alert alert-warning">
+        <div *ngIf="!perfisExiste" class="alert alert-warning text-center">
             Não há nenhum Perfil cadastrado! É preciso cadastrar um perfil para adicionar um usuário!
         </div>
     </div>

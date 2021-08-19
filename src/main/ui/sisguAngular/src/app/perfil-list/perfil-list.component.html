@@ -1,5 +1,5 @@
 <div class="card my-5">
-    <h5 class="text-center mt-2">Tabela de Perfis Cadastrados</h5>
+    <h5 *ngIf="!onEditting" class="text-center mt-2">Tabela de Perfis Cadastrados</h5>
     <div *ngIf="!onEditting" class="card-body">
         <table class="table table-bordered table-striped text-center">
         <thead class="thead-dark">
@@ -22,7 +22,8 @@
         </table>
     </div>
     <div *ngIf="onEditting" class="card my-5">
-        <div class="card-body">
+        <h5 class="text-center mt-2">Cadastro de Perfil</h5>
+        <div class="card-body text-center">
             <form (ngSubmit)="onSubmit()" #userForm="ngForm"> 
                 <div class="form-group">
                     <label for="nome" [ngClass]="!nomeUnico ? 'textWarning' : (!nomeFilled ? 'textNull' : '')">Nome do Perfil</label>
@@ -34,8 +35,8 @@
                         [ngClass]="!nomeUnico ? 'nomeWarning' : (!nomeFilled ? 'nomeNull' : '')"/>
                     <div *ngIf="!nomeFilled" class="form-text textNull">O nome é obrigatório!</div>
                     <div *ngIf="!nomeUnico" class="form-text textWarning">O nome do perfil digitado já está cadastrado!</div>
-                    <button type="submit" class="btn btn-info">Salvar</button>
-                    <button type="button" class="btn btn-danger" (click)="onEditting=false">Cancelar</button>
+                    <button type="submit" class="btn btn-info me-2 mt-2">Salvar</button>
+                    <button type="button" class="btn btn-danger mt-2" (click)="onEditting=false">Cancelar</button>
                 </div>
             </form>
         </div>

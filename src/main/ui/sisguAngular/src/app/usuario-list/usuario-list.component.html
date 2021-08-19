@@ -1,5 +1,5 @@
 <div class="card my-5">
-    <h5 class="text-center mt-2">Tabela de Usuários Cadastrados</h5>
+    <h5 *ngIf="!onEditting" class="text-center mt-2">Tabela de Usuários Cadastrados</h5>
     <div *ngIf="!onEditting" class="card-body">
         <table class="table table-bordered table-striped text-center">
         <thead class="thead-dark">
@@ -31,8 +31,9 @@
         </table>
     </div>
     <div class="card-body" *ngIf="onEditting">
+        <h5 class="text-center mt-2">Cadastro de Usuário</h5>
         <form (ngSubmit)="onSubmit()" #userForm="ngForm"> 
-            <div class="form-group">
+            <div class="form-group text-center">
                 <div class="row mb-3">
                     <div class="col-6">
                         <label for="nome" class="form-label" [ngClass]="!nomeValido ? 'textNull' : ''">Nome do Usuário</label>
@@ -91,7 +92,8 @@
                         </select>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-info">Salvar</button>
+                <button type="submit" class="btn btn-info me-2 mt-2">Salvar</button>
+                <button type="button" class="btn btn-danger mt-2" (click)="onEditting=false">Cancelar</button>
             </div>
         </form>
     </div>

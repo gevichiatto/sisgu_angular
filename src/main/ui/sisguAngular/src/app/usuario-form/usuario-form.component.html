@@ -1,4 +1,5 @@
 <div class="card my-5">
+    <h5 class="text-center mt-2">Cadastro de Usuário</h5>
     <div *ngIf="!perfisExiste || !cargosExiste">
         <div *ngIf="!cargosExiste" class="alert alert-warning">
             Não há nenhum Cargo cadastrado! É preciso cadastrar um cargo para adicionar um usuário!
@@ -7,7 +8,7 @@
             Não há nenhum Perfil cadastrado! É preciso cadastrar um perfil para adicionar um usuário!
         </div>
     </div>
-    <div class="card-body" *ngIf="cargosExiste && perfisExiste">
+    <div class="card-body text-center" *ngIf="cargosExiste && perfisExiste">
         <form (ngSubmit)="onSubmit()" #userForm="ngForm"> 
             <div class="form-group">
                 <div class="row mb-3">

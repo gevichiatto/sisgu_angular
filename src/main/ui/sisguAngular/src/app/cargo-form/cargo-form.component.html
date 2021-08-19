@@ -1,5 +1,6 @@
 <div class="card my-5">
-    <div class="card-body">
+    <h5 class="text-center mt-2">Cadastro de Cargos</h5>
+    <div class="card-body text-center">
         <form (ngSubmit)="onSubmit()" #userForm="ngForm"> 
             <div class="form-group">
                 <label for="nome" [ngClass]="!nomeUnico ? 'textWarning' : (!nomeFilled ? 'textNull' : '')">Nome do Cargo</label>
@@ -11,7 +12,7 @@
                     [ngClass]="!nomeUnico ? 'nomeWarning' : (!nomeFilled ? 'nomeNull' : '')"/>
                 <div *ngIf="!nomeFilled" class="form-text textNull">O nome é obrigatório!</div>
                 <div *ngIf="!nomeUnico" class="form-text textWarning">O nome do cargo digitado já está cadastrado!</div>
-                <button type="submit" class="btn btn-info">Criar</button>
+                <button type="submit" class="btn btn-info mt-2">Criar</button>
             </div>
         </form>
     </div>

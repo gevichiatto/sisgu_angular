@@ -3,26 +3,37 @@
     <div class="col-md-12">
       <div class="card bg-dark my-5">
         <div class="card-body">
-          <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
+          <h2 class="card-title text-center py-3 carb-titulo">{{ title }}</h2>
           <ul class="text-center list-inline py-3">
-            <li class="list-inline-item">
-              <a routerLink="/cargos" class="btn btn-info">Listar Cargos</a>
-            </li>
-            <li class="list-inline-item">
-              <a routerLink="/addcargo" class="btn btn-info">Adicionar Cargo</a>
-            </li>
-            <li class="list-inline-item">
-              <a routerLink="/perfis" class="btn btn-info">Listar Perfis</a>
-            </li>
-            <li class="list-inline-item">
-              <a routerLink="/addperfil" class="btn btn-info">Adicionar Perfil</a>
-            </li>
-            <li class="list-inline-item">
-              <a routerLink="/usuarios" class="btn btn-info">Listar Usuários</a>
-            </li>
-            <li class="list-inline-item">
-              <a routerLink="/addusuario" class="btn btn-info">Adicionar Usuário</a>
-            </li>
+            <div class="row">
+              <div class="col-4 direita-border">
+                <h5 class="text-center carb-titulo">Cargos</h5>
+                <li class="list-inline-item">
+                  <a routerLink="/cargos" class="btn btn-info">Listar Cargos</a>
+                </li>
+                <li class="list-inline-item">
+                  <a routerLink="/addcargo" class="btn btn-info">Adicionar Cargo</a>
+                </li>
+              </div>
+              <div class="col-4 direita-border">
+                <h5 class="text-center carb-titulo">Perfis</h5>
+                <li class="list-inline-item">
+                  <a routerLink="/perfis" class="btn btn-info">Listar Perfis</a>
+                </li>
+                <li class="list-inline-item">
+                  <a routerLink="/addperfil" class="btn btn-info">Adicionar Perfil</a>
+                </li>
+              </div>
+              <div class="col-4">
+                <h5 class="text-center carb-titulo">Usuários</h5>
+                <li class="list-inline-item">
+                  <a routerLink="/usuarios" class="btn btn-info">Listar Usuários</a>
+                </li>
+                <li class="list-inline-item">
+                  <a routerLink="/addusuario" class="btn btn-info">Adicionar Usuário</a>
+                </li>
+              </div>
+            </div>
           </ul>
         </div>
       </div>

@@ -13,3 +13,24 @@
 .nomeNull {
     border-color: crimson;
 }
+
+.navigate {
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+    color: rgb(49, 49, 49);
+    font-weight: 800;
+    font-size: 32px;
+}
+
+.carb-titulo {
+    color: rgb(180, 255, 255);
+}
+
+.direita-border {
+    border-right: 2px solid rgb(99, 99, 99);
+}
+
+.btn-info {
+    background-color: rgb(7, 197, 197)!important;
+}

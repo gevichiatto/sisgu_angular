@@ -9,7 +9,7 @@ export class AppComponent {
   title: string;
 
   constructor() {
-    this.title = 'sisguAngular';
+    this.title = 'Sistema de Gerenciamento de Usuários';
   }
   
 }

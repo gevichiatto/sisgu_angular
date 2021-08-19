@@ -1,5 +1,13 @@
 <div class="card my-5">
-    <div class="card-body">
+    <div *ngIf="!perfisExiste || !cargosExiste">
+        <div *ngIf="!cargosExiste" class="alert alert-warning">
+            Não há nenhum Cargo cadastrado! É preciso cadastrar um cargo para adicionar um usuário!
+        </div>
+        <div *ngIf="!perfisExiste" class="alert alert-warning">
+            Não há nenhum Perfil cadastrado! É preciso cadastrar um perfil para adicionar um usuário!
+        </div>
+    </div>
+    <div class="card-body" *ngIf="cargosExiste && perfisExiste">
         <form (ngSubmit)="onSubmit()" #userForm="ngForm"> 
             <div class="form-group">
                 <div class="row mb-3">
@@ -39,8 +47,8 @@
                         <label for="sexo" class="form-label">Sexo</label>
                         <select class="form-select" [(ngModel)]="sexo" name="selectSexo" required>
                             <option selected disabled>Selecione sua opção</option>
-                            <option value="F">Feminino</option>
-                            <option value="M">Masculino</option>
+                            <option value="Feminino">Feminino</option>
+                            <option value="Masculino">Masculino</option>
                         </select>
                     </div>
                 </div>

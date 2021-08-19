@@ -35,6 +35,9 @@ export class UsuarioFormComponent implements OnInit {
   dataValida: boolean = true;
   cpfUnico: boolean = true;
 
+  cargosExiste: boolean = false;
+  perfisExiste: boolean = false;
+
   constructor(private route: ActivatedRoute, private router: Router, private perfilService: PerfilService, private cargoService: CargoService, private usuarioService: UsuarioService) {
     this.usuario = new Usuario();
   }
@@ -47,8 +50,11 @@ export class UsuarioFormComponent implements OnInit {
         else
           return -1;
       });
-      this.perfis = data;
-      this.nomePerfil = this.perfis[0].nome;
+      if (data.length) {
+        this.perfis = data;
+        this.nomePerfil = this.perfis[0].nome;
+        this.perfisExiste = true;
+      }
 
       this.cargoService.findAll().subscribe(data => {
         data.sort(function(a,b) { 
@@ -57,14 +63,17 @@ export class UsuarioFormComponent implements OnInit {
           else
             return -1;
         });
-        this.cargos = data;
-        this.nomeCargo = this.cargos[0].nome;
+        if (data.length) {
+          this.cargos = data;
+          this.nomeCargo = this.cargos[0].nome;
+          this.cargosExiste = true;
+        }
         this.usuarioService.findAll().subscribe(data => {
           this.listaUsuarios = data;
         })
       });
     });
-    this.sexo = "F";
+    this.sexo = "Feminino";
   }
 
   onSubmit() {
@@ -97,7 +106,7 @@ export class UsuarioFormComponent implements OnInit {
       return;
     } 
     
-    this.usuarioService.save(this.usuario).subscribe(result => {});
+    this.usuarioService.save(this.usuario).subscribe(result => {this.gotoUsuarioList()});
   }
 
   validarForm(user: Usuario) {
@@ -125,5 +134,9 @@ export class UsuarioFormComponent implements OnInit {
       }
     }
     return true;
+  }
+
+  gotoUsuarioList() {
+    this.router.navigate(['/usuarios']);
   }
 }

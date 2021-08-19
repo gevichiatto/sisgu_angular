@@ -21,4 +21,8 @@ export class UsuarioService {
   public save(usuario: Usuario) {
     return this.http.post<Usuario>(this.usuariosUrl, usuario);
   }
+
+  public update(usuario: Usuario) {
+    return this.http.put(this.usuariosUrl, usuario);
+  }
 }

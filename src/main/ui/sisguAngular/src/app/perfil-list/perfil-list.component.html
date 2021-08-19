@@ -7,14 +7,12 @@
         <table class="table table-bordered table-striped text-center">
         <thead class="thead-dark">
             <tr>
-            <th scope="col">#</th>
             <th scope="col">Perfil</th>
             <th scope="col" title="Só é possível excluir perfis que não estão associados a nenhum usuário">Ações</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let perfil of perfis">
-            <td>{{ perfil.id }}</td>
             <td>{{ perfil.nome }}</td>
             <td>
                 <button type="button" class="btn btn-secondary me-2" (click)="onEditar(perfil)">Editar</button>

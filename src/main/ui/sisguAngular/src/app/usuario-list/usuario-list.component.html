@@ -7,7 +7,6 @@
         <table class="table table-bordered table-striped text-center">
         <thead class="thead-dark">
             <tr>
-            <th scope="col">#</th>
             <th scope="col">Nome do Usuário</th>
             <th scope="col">CPF</th>
             <th scope="col">Data de Nascimento</th>
@@ -19,7 +18,6 @@
         </thead>
         <tbody>
             <tr *ngFor="let usuario of usuarios">
-            <td>{{ usuario.id }}</td>
             <td>{{ usuario.nome }}</td>
             <td>{{ usuario.cpf }}</td>
             <td>{{ usuario.dataNascimento }}</td>

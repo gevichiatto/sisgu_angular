@@ -7,14 +7,12 @@
       <table class="table table-bordered table-striped text-center">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Cargo</th>
             <th scope="col">Ações</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let cargo of cargos">
-            <td>{{ cargo.id }}</td>
             <td>{{ cargo.nome }}</td>
             <td>
               <button type="button" class="btn btn-secondary" (click)="onEditar(cargo)">Editar</button>

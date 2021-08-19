@@ -32,5 +32,12 @@
 }
 
 .btn-info {
-    background-color: rgb(7, 197, 197)!important;
+    background-color: rgb(10, 104, 104)!important;
+    border-color:rgb(10, 104, 104)!important;
+    color:azure!important;
+}
+
+.btn-info:hover {
+    background-color: rgb(7, 75, 75)!important;
+    border-color:rgb(7, 75, 75)!important;
 }

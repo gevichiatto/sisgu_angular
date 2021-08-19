@@ -1,6 +1,7 @@
 <div class="card my-5">
+    <h5 class="text-center mt-2">Tabela de Perfis Cadastrados</h5>
     <div *ngIf="!onEditting" class="card-body">
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped text-center">
         <thead class="thead-dark">
             <tr>
             <th scope="col">#</th>
@@ -13,7 +14,7 @@
             <td>{{ perfil.id }}</td>
             <td>{{ perfil.nome }}</td>
             <td>
-                <button type="button" class="btn btn-secondary" (click)="onEditar(perfil)">Editar</button>
+                <button type="button" class="btn btn-secondary me-2" (click)="onEditar(perfil)">Editar</button>
                 <button *ngIf="podeExcluir(perfil)" type="button" class="btn btn-warning" (click)="onExcluir(perfil)">Excluir</button>
             </td>
             </tr>

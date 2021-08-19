@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Perfil } from '../classes/perfil';
+import { Usuario } from '../classes/usuario';
 import { PerfilService } from '../services/perfil.service';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
   selector: 'app-perfil-list',
@@ -10,12 +12,13 @@ import { PerfilService } from '../services/perfil.service';
 export class PerfilListComponent implements OnInit {
 
   perfis!: Perfil[];
+  usuarios!: Usuario[];
   onEditting: boolean = false;
   perfilEdicao!: Perfil;
   nomeUnico: boolean = true;
   nomeFilled: boolean = true;
 
-  constructor(private perfilService: PerfilService) { }
+  constructor(private perfilService: PerfilService, private usuarioService: UsuarioService) { }
 
   ngOnInit() {
     this.perfilService.findAll().subscribe(data => {
@@ -26,6 +29,10 @@ export class PerfilListComponent implements OnInit {
           return -1;
       });
       this.perfis = data;
+
+      this.usuarioService.findAll().subscribe(data => {
+        this.usuarios = data;
+      })
     });
   }
 
@@ -64,6 +71,17 @@ export class PerfilListComponent implements OnInit {
       if (p.nome == name) {
         this.nomeUnico = false;
         return false;
+      }
+    }
+    return true;
+  }
+
+  podeExcluir(perfil: Perfil) {
+    if (this.usuarios) {
+      for (let u of this.usuarios) {
+        if (u.perfil.nome == perfil.nome) {
+          return false;
+        }
       }
     }
     return true;

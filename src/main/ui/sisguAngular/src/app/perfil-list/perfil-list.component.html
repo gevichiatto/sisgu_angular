@@ -5,7 +5,7 @@
             <tr>
             <th scope="col">#</th>
             <th scope="col">Perfil</th>
-            <th scope="col">Ações</th>
+            <th scope="col" title="Só é possível excluir perfis que não estão associados a nenhum usuário">Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -14,7 +14,7 @@
             <td>{{ perfil.nome }}</td>
             <td>
                 <button type="button" class="btn btn-secondary" (click)="onEditar(perfil)">Editar</button>
-                <button type="button" class="btn btn-warning" (click)="onExcluir(perfil)">Excluir</button>
+                <button *ngIf="podeExcluir(perfil)" type="button" class="btn btn-warning" (click)="onExcluir(perfil)">Excluir</button>
             </td>
             </tr>
         </tbody>
